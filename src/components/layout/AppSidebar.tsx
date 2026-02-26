@@ -69,7 +69,8 @@ export function AppSidebar() {
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
-            <div className="px-2 py-1 text-xs text-muted-foreground truncate">{user?.email}</div>
+            <div className="px-2 py-1 text-sm font-medium truncate">{user?.user_metadata?.full_name}</div>
+            <div className="px-2 pb-1 text-xs text-muted-foreground truncate">{user?.email}</div>
           </SidebarMenuItem>
           <SidebarMenuItem>
             <SidebarMenuButton onClick={signOut} className="text-destructive hover:text-destructive">
