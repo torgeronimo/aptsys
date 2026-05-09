@@ -42,7 +42,7 @@ export function RegisterPage() {
 
   return (
     <>
-    <div className="flex min-h-svh items-center justify-center bg-muted/40 p-4">
+    <div className="flex min-h-svh items-center justify-center bg-muted/40 p-4 flex-col">
       <div className="fixed top-4 right-4">
         <ThemeToggle />
       </div>
@@ -99,8 +99,9 @@ export function RegisterPage() {
           </p>
         </CardContent>
       </Card>
+      <div className='position absolute bottom-0 pb-2'><Link to='/policy' className='text-sm text-neutral-500 underline transition hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white'>Privacy & Policy</Link></div>
     </div>
-    <div className='position absolute bottom-0 pb-2'><Link to='/policy' className='text-sm text-neutral-500 underline transition hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white'>Privacy & Policy</Link></div>
+    
     </>
   )
 }
