@@ -27,8 +27,11 @@ const navItems = [
   { label: 'Billing', to: '/billing', icon: Receipt },
 ]
 
+
+
 export function AppSidebar() {
   const { user, signOut } = useAuth()
+  
 
   return (
     <Sidebar>
@@ -68,9 +71,22 @@ export function AppSidebar() {
       </SidebarContent>
       <SidebarFooter>
         <SidebarMenu>
-          <SidebarMenuItem>
-            <div className="px-2 py-1 text-sm font-medium truncate">{user?.user_metadata?.full_name}</div>
-            <div className="px-2 pb-1 text-xs text-muted-foreground truncate">{user?.email}</div>
+          <SidebarMenuItem className='flex flex-row items-center'>
+            {user?.user_metadata?.avatar_url ? (
+              <img 
+                src={user.user_metadata.avatar_url} 
+                alt="Profile" 
+                className="h-12 w-12 rounded-full border-2 border-primary/20 shadow-sm"
+              />
+            ) : (
+              <div className="h-12 w-12 rounded-full bg-sidebar-accent flex items-center justify-center mb-3">
+                <Users className="h-6 w-6 text-muted-foreground" />
+              </div>
+            )}
+            <div>
+              <div className="px-2 py-1 text-sm font-medium truncate">{user?.user_metadata?.full_name}</div>
+              <div className="px-2 pb-1 text-xs text-muted-foreground truncate">{user?.email}</div>
+            </div>
           </SidebarMenuItem>
           <SidebarMenuItem>
             <SidebarMenuButton onClick={signOut} className="text-destructive hover:text-destructive">
