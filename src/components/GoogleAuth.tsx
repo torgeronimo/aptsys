@@ -47,7 +47,7 @@ export default function GoogleButton({mode='login'}: GoogleButtonProps) {
             d="M43.6 20.5H42V20H24v8h11.3c-1.1 3-3.4 5.3-6.5 6.5l6.2 5.2C38 36.7 44 31 44 24c0-1.3-.1-2.3-.4-3.5z"
             />
         </svg>
-        {mode==='login' ? 'Sign up with Googgle' : 'Sign in with Google'}
+        {mode==='login' ? 'Sign in with Googgle' : 'Sign up with Google'}
         
         </button>
     )
