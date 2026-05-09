@@ -66,6 +66,10 @@ export function BuildingDetailPage() {
     setDeleteTarget(null)
   }
 
+
+const [activeCardId, setActiveCardId] = useState<string | null>(null);
+
+
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-4">
@@ -95,19 +99,25 @@ export function BuildingDetailPage() {
       ) : (
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {units.map((u) => (
-            <Card key={u.id} className="group">
+            <Card key={u.id} onClick={() => setActiveCardId(activeCardId === u.id ? null : u.id)} className={`group transition-all duration-200 cursor-pointer ${activeCardId === u.id ? 'scale-[1.02] shadow-md ring-2 ring-primary/20 border-primary' : 'scale-100 shadow-sm border-border lg:hover:scale-[1.02]'}`}>
               <CardHeader className="pb-1">
                 <div className="flex items-start justify-between">
                   <CardTitle className="text-sm font-medium">Unit {u.unit_number}</CardTitle>
-                  <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Button size="icon" variant="ghost" className="h-6 w-6" onClick={() => openEdit(u)}>
+                  <div className={`flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity ${activeCardId === u.id ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+                    <Button size="icon" variant="ghost" className="h-6 w-6" onClick={(e) => {
+                      e.stopPropagation();
+                      openEdit(u);
+                    }}>
                       <Pencil className="h-3 w-3" />
                     </Button>
                     <Button
                       size="icon"
                       variant="ghost"
                       className="h-6 w-6 text-destructive"
-                      onClick={() => setDeleteTarget(u)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setDeleteTarget(u);
+                      }}
                     >
                       <Trash2 className="h-3 w-3" />
                     </Button>

@@ -60,6 +60,8 @@ export function BuildingsPage() {
     setDeleteTarget(null)
   }
 
+  const [activeCardId, setActiveCardId] = useState<string | null>(null);
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -87,7 +89,7 @@ export function BuildingsPage() {
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {buildings.map((b) => (
-            <Card key={b.id} className="group">
+            <Card key={b.id} onClick={() => setActiveCardId(activeCardId === b.id ? null : b.id)} className={`group transition-all duration-200 cursor-pointer ${activeCardId === b.id ? 'scale-[1.02] shadow-md ring-2 ring-primary/20 border-primary' : 'scale-100 shadow-sm border-border lg:hover:scale-[1.02]'}`}>
               <CardHeader className="pb-2">
                 <div className="flex items-start justify-between">
                   <div className="space-y-1">
@@ -96,15 +98,21 @@ export function BuildingsPage() {
                       <MapPin className="h-3 w-3" /> {b.address}
                     </CardDescription>
                   </div>
-                  <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Button size="icon" variant="ghost" className="h-7 w-7" onClick={() => openEdit(b)}>
+                  <div className={`flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity ${activeCardId === b.id ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+                    <Button size="icon" variant="ghost" className="h-7 w-7" onClick={(e) => {
+                      e.stopPropagation();
+                      openEdit(b);
+                    }}>
                       <Pencil className="h-3.5 w-3.5" />
                     </Button>
                     <Button
                       size="icon"
                       variant="ghost"
                       className="h-7 w-7 text-destructive"
-                      onClick={() => setDeleteTarget(b)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setDeleteTarget(b);
+                      }}
                     >
                       <Trash2 className="h-3.5 w-3.5" />
                     </Button>
