@@ -38,7 +38,7 @@ export function TenantsPage() {
   const updateTenant = useUpdateTenant()
   const deleteTenant = useDeleteTenant()
 
-  const { register, handleSubmit, reset, control, formState: { errors } } = useForm<TenantInput>({
+  const { register, handleSubmit, reset, control, setError, formState: { errors } } = useForm<TenantInput>({
     resolver: zodResolver(tenantSchema),
     defaultValues: { status: 'active' },
   })
@@ -64,15 +64,24 @@ export function TenantsPage() {
   }
 
   const onSubmit = async (data: TenantInput) => {
-    if (editTarget) {
-      await updateTenant.mutateAsync({ id: editTarget.id, input: data })
-      toast.success('Tenant updated')
-    } else {
-      await createTenant.mutateAsync(data)
-      toast.success('Tenant added')
+    try {
+      if (editTarget) {
+        await updateTenant.mutateAsync({ id: editTarget.id, input: data })
+        toast.success('Tenant updated')
+      } else {
+        await createTenant.mutateAsync(data)
+        toast.success('Tenant added')
+      }
+      setFormOpen(false)
+      reset()
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Unable to save tenant.'
+      if (message.includes('active tenant')) {
+        setError('unit_id', { type: 'manual', message })
+      } else {
+        toast.error(message)
+      }
     }
-    setFormOpen(false)
-    reset()
   }
 
   const onDelete = async () => {
