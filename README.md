@@ -10,7 +10,7 @@
 [![TailwindCSS](https://img.shields.io/badge/Tailwind-4.2-06B6D4?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-[Live Demo](#) • [Report Bug](#) • [Request Feature](#)
+[Live Demo](Aptsys.online) • [Report Bug](#) • [Request Feature](#)
 
 </div>
 
@@ -45,7 +45,7 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/aptsys.git
+   git clone https://github.com/torgeronimo/aptsys.git
    cd aptsys
    ```
 
@@ -186,11 +186,6 @@ We welcome contributions! Here's how you can help:
 - Ensure code passes ESLint checks
 - Test your changes thoroughly
 
----
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
@@ -198,8 +193,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you have any questions or need help:
 
-- 💬 Open an [Issue](https://github.com/yourusername/aptsys/issues)
-- 📧 Reach out via email
+- 💬 Open an [Issue](https://github.com/torgeronimo/aptsys/issues)
+- 📧 Reach out via email (victorgeronimod@gmail.com)
 - 📚 Check the [Documentation](#)
 
 ---
@@ -214,7 +209,7 @@ If you have any questions or need help:
 
 <div align="center">
 
-**Made with ❤️ by Your Name**
+**Made with ❤️ by Victor Geronimo**
 
 ⭐ If you find this project useful, please consider giving it a star! ⭐
 
