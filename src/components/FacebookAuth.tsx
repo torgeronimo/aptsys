@@ -11,7 +11,7 @@ export default function FacebookButton({mode='login'}:FacebookButtonProps) {
         const { error } = await supabase.auth.signInWithOAuth({
             provider: 'facebook',
             options: {
-                redirectTo: 'https://aptsys.vercel.app',
+                redirectTo: 'https://aptsys.online',
             },
         })
 

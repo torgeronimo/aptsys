@@ -11,7 +11,7 @@ export default function GoogleButton({mode='login'}: GoogleButtonProps) {
         const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-            redirectTo: 'http://aptsys.vercel.app',
+            redirectTo: 'http://aptsys.online',
         },
         })
 
