@@ -16,6 +16,7 @@ import { unitSchema, type UnitInput } from '@/lib/schemas'
 import type { Unit } from '@/types/database'
 import { Plus, ChevronLeft, DoorOpen, Pencil, Trash2 } from 'lucide-react'
 import { toast } from 'sonner'
+import { Spinner } from '@/components/Spinner'
 
 export function BuildingDetailPage() {
   const { id } = useParams<{ id: string }>()
@@ -81,7 +82,7 @@ export function BuildingDetailPage() {
       </div>
 
       {isLoading ? (
-        <div className="text-muted-foreground text-sm">Loading...</div>
+        <Spinner />
       ) : !units?.length ? (
         <Card className="flex flex-col items-center justify-center p-12 text-center">
           <DoorOpen className="h-12 w-12 text-muted-foreground mb-4" />

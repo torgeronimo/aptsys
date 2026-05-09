@@ -9,10 +9,12 @@ import { BuildingDetailPage } from '@/pages/BuildingDetailPage'
 import { TenantsPage } from '@/pages/TenantsPage'
 import { TenantDetailPage } from '@/pages/TenantDetailPage'
 import { BillingPage } from '@/pages/BillingPage'
+import PrivacyPolicyPage from './pages/PrivacyPolicy'
 
 export const router = createBrowserRouter([
   { path: '/login', element: <LoginPage /> },
   { path: '/register', element: <RegisterPage /> },
+  { path: '/policy', element: <PrivacyPolicyPage /> },
   {
     element: <ProtectedRoute />,
     children: [
@@ -26,6 +28,7 @@ export const router = createBrowserRouter([
           { path: '/tenants', element: <TenantsPage /> },
           { path: '/tenants/:id', element: <TenantDetailPage /> },
           { path: '/billing', element: <BillingPage /> },
+          
         ],
       },
     ],

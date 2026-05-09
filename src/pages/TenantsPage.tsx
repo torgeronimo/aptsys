@@ -17,6 +17,7 @@ import { tenantSchema, type TenantInput } from '@/lib/schemas'
 import type { Tenant } from '@/types/database'
 import { Plus, Users, Pencil, Trash2, ExternalLink, Search } from 'lucide-react'
 import { toast } from 'sonner'
+import { Spinner } from '@/components/Spinner'
 
 export function TenantsPage() {
   const [statusFilter, setStatusFilter] = useState<string>('all')
@@ -136,7 +137,7 @@ export function TenantsPage() {
       </div>
 
       {isLoading ? (
-        <div className="text-muted-foreground text-sm">Loading...</div>
+        <Spinner />
       ) : !filteredTenants?.length ? (
         <div className="flex flex-col items-center justify-center p-12 text-center border rounded-lg">
           <Users className="h-12 w-12 text-muted-foreground mb-4" />

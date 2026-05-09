@@ -16,6 +16,7 @@ import { billSchema, type BillInput } from '@/lib/schemas'
 import type { Bill } from '@/types/database'
 import { Plus, Receipt, Pencil, Trash2, CheckCircle, XCircle } from 'lucide-react'
 import { toast } from 'sonner'
+import { Spinner } from '@/components/Spinner'
 
 const MONTHS = [
   'January', 'February', 'March', 'April', 'May', 'June',
@@ -179,7 +180,7 @@ export function BillingPage() {
       </div>
 
       {isLoading ? (
-        <div className="text-muted-foreground text-sm">Loading...</div>
+        <Spinner />
       ) : !bills?.length ? (
         <div className="flex flex-col items-center justify-center p-12 text-center border rounded-lg">
           <Receipt className="h-12 w-12 text-muted-foreground mb-4" />

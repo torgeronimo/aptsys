@@ -11,6 +11,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Building2 } from 'lucide-react'
 import { toast } from 'sonner'
 import { ThemeToggle } from '@/components/layout/ThemeToggle'
+import GoogleButton from '@/components/GoogleAuth'
+import FacebookButton from '@/components/FacebookAuth'
 
 export function LoginPage() {
   const navigate = useNavigate()
@@ -35,7 +37,8 @@ export function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-svh items-center justify-center bg-muted/40 p-4">
+    <>
+    <div className="flex min-h-svh items-center justify-center bg-muted/40 p-4 flex-col">
       <div className="fixed top-4 right-4">
         <ThemeToggle />
       </div>
@@ -59,18 +62,35 @@ export function LoginPage() {
               <Input id="password" type="password" {...register('password')} />
               {errors.password && <p className="text-destructive text-xs">{errors.password.message}</p>}
             </div>
-            <Button type="submit" className="w-full" disabled={loading}>
+            <Button type="submit" className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-700 shadow-sm transition hover:bg-gray-100" disabled={loading}>
               {loading ? 'Signing in...' : 'Sign In'}
             </Button>
           </form>
+          <div className="relative flex py-5 items-center">
+              <div className="grow border-t border-gray-400"></div>
+              <span className="text-center text-sm text-muted-foreground shrink mx-4">OR</span>
+              <div className="grow border-t border-gray-400"></div>
+          </div>
+          <div className='flex flex-col gap-4'>
+            <GoogleButton mode='login'></GoogleButton>
+            <FacebookButton mode='login'></FacebookButton>
+          </div>
+          
           <p className="mt-4 text-center text-sm text-muted-foreground">
             Don&apos;t have an account?{' '}
             <Link to="/register" className="text-primary underline underline-offset-4">
               Register
             </Link>
           </p>
+          
         </CardContent>
+        
       </Card>
+      <div className='position absolute bottom-0 pb-2'><Link to='/policy' className='text-sm text-neutral-500 underline transition hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white'>Privacy & Policy</Link></div>
+      
     </div>
+    
+    </>
+
   )
 }

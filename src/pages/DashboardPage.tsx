@@ -9,6 +9,7 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
 } from 'recharts'
 import { Building2, Users, CheckCircle2, AlertCircle, DoorOpen, ArrowRight } from 'lucide-react'
+import { Spinner } from '@/components/Spinner'
 
 const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
@@ -93,7 +94,7 @@ export function DashboardPage() {
           </CardHeader>
           <CardContent>
             {isLoading ? (
-              <p className="text-muted-foreground text-sm">Loading...</p>
+              <Spinner />
             ) : (
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">

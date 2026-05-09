@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useBuildings, useCreateBuilding, useUpdateBuilding, useDeleteBuilding } from '@/hooks/useBuildings'
+import { Spinner } from '@/components/Spinner'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog'
@@ -73,7 +74,7 @@ export function BuildingsPage() {
       </div>
 
       {isLoading ? (
-        <div className="text-muted-foreground text-sm">Loading...</div>
+        <Spinner />
       ) : !buildings?.length ? (
         <Card className="flex flex-col items-center justify-center p-12 text-center">
           <Building2 className="h-12 w-12 text-muted-foreground mb-4" />

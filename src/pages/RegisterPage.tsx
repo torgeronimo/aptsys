@@ -11,6 +11,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Building2 } from 'lucide-react'
 import { toast } from 'sonner'
 import { ThemeToggle } from '@/components/layout/ThemeToggle'
+import GoogleButton from '@/components/GoogleAuth'
+import FacebookButton from '@/components/FacebookAuth'
 
 export function RegisterPage() {
   const navigate = useNavigate()
@@ -79,6 +81,15 @@ export function RegisterPage() {
               {loading ? 'Creating account...' : 'Create Account'}
             </Button>
           </form>
+          <div className="relative flex py-5 items-center">
+              <div className="grow border-t border-gray-400"></div>
+              <span className="text-center text-sm text-muted-foreground shrink mx-4">OR</span>
+              <div className="grow border-t border-gray-400"></div>
+          </div>
+          <div className='flex flex-col gap-4'>
+            <GoogleButton mode='register'></GoogleButton>
+            <FacebookButton mode='register'></FacebookButton>
+          </div>
           <p className="mt-4 text-center text-sm text-muted-foreground">
             Already have an account?{' '}
             <Link to="/login" className="text-primary underline underline-offset-4">

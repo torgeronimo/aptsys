@@ -9,6 +9,7 @@ import { ChevronLeft, Phone, Mail, Calendar, Building2, DoorOpen } from 'lucide-
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 } from 'recharts'
+import { Spinner } from '@/components/Spinner'
 
 const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
@@ -18,7 +19,7 @@ export function TenantDetailPage() {
   const { data: bills } = useBills({ tenantId: id })
 
   if (isLoading) {
-    return <div className="text-muted-foreground text-sm">Loading...</div>
+    <Spinner />
   }
 
   if (!tenant) {
